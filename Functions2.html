@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Game!</title>
+    <style>
+
+        input{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200px;
+        height: 200px;
+        font-size: 15px;
+        transform: translate(-50%,-50%);
+        text-align: center
+    }
+
+    #range{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200px;
+        height: 50px;
+        font-size: 15px;
+        transform: translate(-110%,250%);
+        text-align: center
+    }
+
+    #attemp {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200px;
+        height: 50px;
+        font-size: 15px;
+        transform: translate(10%,250%);
+        text-align: center
+    }
+    </style>
+</head>
+
+<body>
+    <input id=txt type="button" value="LET'S PLAY!!" onclick="guessNumber()">
+    <input id=range type="button" value="Change the range" onclick="changeRange()">
+    <input id=attemp type="button" value="Amount of attemps(N/A)" onclick="changeAttemp()">
+    <script>
+        /*
+        let publicMassage = "Hallo World!";
+        let greeting = "hi";
+
+        console.log(publicMassage);
+
+        function testMessage() {
+            alert("test! " + publicMassage);
+        }
+
+        testMessage();
+
+        //this function has a local variable (massageOfDCI)
+
+
+
+        function testMessageFromDCI() {
+
+            let messageOfDCI = 'U will learn JS soon!';
+            alert("test! " + publicMassage + " " + messageOfDCI)
+        }
+
+        testMessageFromDCI();
+
+
+        function flexMessage(message = "Default", from) {
+            console.log("you have a message: \n " + " from: " + from + '\n' + message);
+
+        }
+
+        flexMessage(prompt("what is your message"), prompt("Please enter the sender name"));
+
+
+        function returnMessage() {
+            console.log("Hello World - return message")
+            return ("hi!");
+
+        }
+
+        alert(returnMessage());
+*/
+
+
+        let low = 1;
+        let high = 10;
+        let attemp = 1;
+
+        function guessNumber() {
+            let randomNumber = Math.floor(Math.random() * parseInt(high) + parseInt(low));
+            let answer = prompt("Please guess the number. It is between " + low + " and " + high);
+            if (answer > parseInt(high)) {
+                prompt("Please try again.This number is of the range! The number is between " + low + " and " +
+                    high);
+            }
+
+            if (answer == randomNumber) {
+                alert("You win!!!");
+                document.getElementById("txt").style.backgroundColor = "green";
+                document.getElementById("txt").value = "YOU WIN!"
+
+            } else {
+                alert("You lost!!! It was " + randomNumber);
+                document.getElementById("txt").style.backgroundColor = "red";
+                document.getElementById("txt").value = "YOU LOST! Try again!"
+            }
+        }
+
+        function changeRange() {
+            low = prompt("Set the lowest value!");
+            high = prompt("Set the highest value!")
+        }
+
+        function changeAttemp() {
+            attemp = prompt(
+                "Normaly you have only 1 attemt to guess the answer. But if you like to have more, then set the limit now."
+            );
+
+        }
+    </script>
+</body>
+
+</html>
